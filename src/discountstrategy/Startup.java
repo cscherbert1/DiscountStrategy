@@ -26,6 +26,8 @@ public class Startup {
         pos.endSale();
         //output receipt
 
+        output2.generateReceipt("Hello Console");
+
     }
     
 }

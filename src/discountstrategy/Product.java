@@ -15,6 +15,7 @@ public class Product {
         setProdID(prodID);
         setProdName(prodName);
         setPrice(price); 
+        setDiscountStrategy(ds);
         
         
     }
@@ -24,6 +25,7 @@ public class Product {
     }
 
     public void setProdID(String prodID) {
+        //need validation
         this.prodID = prodID;
     }
 
@@ -32,6 +34,7 @@ public class Product {
     }
 
     public void setProdName(String prodName) {
+        //need validation
         this.prodName = prodName;
     }
 
@@ -40,6 +43,7 @@ public class Product {
     }
 
     public void setPrice(double price) {
+        //need validation
         this.price = price;
     }
 

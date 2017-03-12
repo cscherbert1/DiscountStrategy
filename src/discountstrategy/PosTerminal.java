@@ -38,7 +38,8 @@ public class PosTerminal {
     public void setOutput(OutputStrategy output) {
         //validation
         if(output == null){
-            throw new NullPointerException();
+            System.out.println("Failure at PosTerminal.setOutput. output strategy cannot be null");
+            //throw new NullPointerException();
         } else {
            this.output = output;           
         }

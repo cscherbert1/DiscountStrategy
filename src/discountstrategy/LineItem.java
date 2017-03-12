@@ -12,6 +12,7 @@ public class LineItem {
     public LineItem(String prodID, int qty, DataAccessStrategy db) {
         //constructor uses information passed in from Receipt to find the appropriate product inside the db
         product = findProduct(prodID, db);
+        setQty(qty);
     }
     
     //helper method does the work of finding the product inside the db based on passed in prodID
@@ -37,6 +38,7 @@ public class LineItem {
     }
 
     public void setQty(int qty) {
+        //need validation
         this.qty = qty;
     }
     
