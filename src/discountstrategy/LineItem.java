@@ -25,12 +25,21 @@ public class LineItem {
         data += product.getProdID() + "   ";
         data += product.getProdName() + "   ";
         data += product.getPrice() + "   ";
-        data += getQty() + "   ";
-        //following line should be in a helper method 
-        data += (product.getPrice() * getQty() + "   ");
-        data += product.getDiscountStrategy().getDiscount();
+        data += getQty() + "   "; 
+        data += getSubtotal() + "   ";
+        data += getTotalDiscount();
         
         return data;
+    }
+    
+    public double getSubtotal(){
+        double subtotal = (product.getPrice() * getQty());
+        return subtotal;
+    }
+    
+    public double getTotalDiscount(){
+        double totalDiscount =(product.getPrice() * (product.getDiscountStrategy().getDiscount())* getQty());
+        return totalDiscount;
     }
 
     public int getQty() {

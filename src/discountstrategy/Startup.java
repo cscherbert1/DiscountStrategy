@@ -10,12 +10,12 @@ public class Startup {
     public static void main(String[] args) {
         DataAccessStrategy db = new MemoryDataAccess();
 //        Store khols = new Store();
-        OutputStrategy output = new GuiReceiptOutput();
-        OutputStrategy output2 = new ConsoleReceiptOutput();
+        OutputStrategy guiOutput = new GuiReceiptOutput();
+        OutputStrategy consoleOutput = new ConsoleReceiptOutput();
         
 //        khols.setStoreName("Khols");
         
-        PosTerminal pos = new PosTerminal(output, output2);
+        PosTerminal pos = new PosTerminal(guiOutput, consoleOutput);
         //start sale: pass in customer ID if available
         pos.startSale("100", db);
         //add product1 (ProdID and qty)
@@ -25,8 +25,8 @@ public class Startup {
         //end sale    
         pos.endSale();
         //output receipt
-
-        output2.generateReceipt("Hello Console");
+        
+       
 
     }
     

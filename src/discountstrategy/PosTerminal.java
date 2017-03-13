@@ -6,12 +6,12 @@ package discountstrategy;
  */
 public class PosTerminal {
     private Receipt receipt;
-    private OutputStrategy output;
-    private OutputStrategy output2;
+    private OutputStrategy guiOutput;
+    private OutputStrategy consoleOutput;
     
-    public PosTerminal(OutputStrategy output, OutputStrategy output2){
-        setOutput(output);
-        setOutput(output2);
+    public PosTerminal(OutputStrategy guiOutput, OutputStrategy consoleOutput){
+        setGuiOutput(guiOutput);
+        setGuiOutput(consoleOutput);
         
     }
 
@@ -27,21 +27,21 @@ public class PosTerminal {
 
     public final void endSale() {
         //output the receipt
-        output.generateReceipt(receipt.getReceiptData());
-        output2.generateReceipt(receipt.getReceiptData());
+        guiOutput.generateReceipt(receipt.getReceiptData());
+        //consoleOutput.generateReceipt(receipt.getReceiptData());
     }
 
-    public OutputStrategy getOutput() {
-        return output;
+    public OutputStrategy getGuiOutput() {
+        return guiOutput;
     }
 
-    public void setOutput(OutputStrategy output) {
+    public void setGuiOutput(OutputStrategy guiOutput) {
         //validation
-        if(output == null){
+        if(guiOutput == null){
             System.out.println("Failure at PosTerminal.setOutput. output strategy cannot be null");
             //throw new NullPointerException();
         } else {
-           this.output = output;           
+           this.guiOutput = guiOutput;           
         }
 
     }
