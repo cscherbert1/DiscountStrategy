@@ -20,7 +20,7 @@ public class LineItem {
         return db.findProduct(prodID, db);
     }
     
-    public String getLineData(){
+    public final String getLineData(){
         String data = "";
         data += product.getProdID() + "   ";
         data += product.getProdName() + "   ";
@@ -32,7 +32,7 @@ public class LineItem {
         return data;
     }
     
-    public double getSubtotal(){
+    public final double getSubtotal(){
         double subtotal = (product.getPrice() * getQty());
         return subtotal;
     }
@@ -43,11 +43,11 @@ public class LineItem {
 //        return totalDiscount;
 //    }
 
-    public int getQty() {
+    public final int getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public final void setQty(int qty) {
         //need validation
         this.qty = qty;
     }

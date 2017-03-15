@@ -30,11 +30,8 @@ public class Receipt {
         addToArray(item);
 
     }
-
-    //***************is this solution to all of the null pointer exceptions too rigid?***************
     
-    private void addToArray(LineItem item) {
-        //validation, can't be null
+    private final void addToArray(LineItem item) {
         if (item == null) {
             throw new NullPointerException();
         }  
@@ -47,7 +44,7 @@ public class Receipt {
        
     }
 
-    public String getReceiptData() {
+    public final String getReceiptData() {
         String data = "";
 //        data += store.getReceiptGreeting() + "\n\n";
         //need if logic if no cust name
@@ -62,7 +59,7 @@ public class Receipt {
         return data;
     }
     
-    public String getColumnHeadings(){
+    public final String getColumnHeadings(){
         String columnHeading = "";
         columnHeading += "ID   Item   Price   Qty   Subtotal   Discount\n";
         columnHeading += "---------------------------------------------------\n";

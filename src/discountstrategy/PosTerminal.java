@@ -11,7 +11,7 @@ public class PosTerminal {
     
     public PosTerminal(OutputStrategy guiOutput, OutputStrategy consoleOutput){
         setGuiOutput(guiOutput);
-        setGuiOutput(consoleOutput);
+        setConsoleOutput(consoleOutput);
         
     }
 
@@ -28,20 +28,31 @@ public class PosTerminal {
     public final void endSale() {
         //output the receipt
         guiOutput.generateReceipt(receipt.getReceiptData());
-        //consoleOutput.generateReceipt(receipt.getReceiptData());
+        consoleOutput.generateReceipt(receipt.getReceiptData());
     }
 
-    public OutputStrategy getGuiOutput() {
+    public final OutputStrategy getGuiOutput() {
         return guiOutput;
     }
 
-    public void setGuiOutput(OutputStrategy guiOutput) {
-        //validation
+    public final void setGuiOutput(OutputStrategy guiOutput) {
         if(guiOutput == null){
-            System.out.println("Failure at PosTerminal.setOutput. output strategy cannot be null");
-            //throw new NullPointerException();
+            throw new NullPointerException();
         } else {
            this.guiOutput = guiOutput;           
+        }
+
+    }
+
+    public final OutputStrategy getConsoleOutput() {
+        return consoleOutput;
+    }
+
+    public final void setConsoleOutput(OutputStrategy consoleOutput) {
+        if(consoleOutput == null){
+            throw new NullPointerException();
+        } else {
+                   this.consoleOutput = consoleOutput; 
         }
 
     }

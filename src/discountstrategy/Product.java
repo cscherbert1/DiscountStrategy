@@ -15,47 +15,45 @@ public class Product {
         setProdID(prodID);
         setProdName(prodName);
         setPrice(price); 
-        setDiscountStrategy(ds);
-        
-        
+        setDiscountStrategy(ds);  
     }
     
-    public double getDiscount(int qty) {
+    public final double getDiscount(int qty) {
         return ds.getDiscount(qty, price);
     }
 
-    public String getProdID() {
+    public final String getProdID() {
         return prodID;
     }
 
-    public void setProdID(String prodID) {
+    public final void setProdID(String prodID) {
         //need validation
         this.prodID = prodID;
     }
 
-    public String getProdName() {
+    public final String getProdName() {
         return prodName;
     }
 
-    public void setProdName(String prodName) {
+    public final void setProdName(String prodName) {
         //need validation
         this.prodName = prodName;
     }
 
-    public double getPrice() {
+    public final double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public final void setPrice(double price) {
         //need validation
         this.price = price;
     }
 
-    public DiscountStrategy getDiscountStrategy() {
+    public final DiscountStrategy getDiscountStrategy() {
         return ds;
     }
     
-    public void setDiscountStrategy(DiscountStrategy ds){
+    public final void setDiscountStrategy(DiscountStrategy ds){
         //need validation
         this.ds = ds;
     }

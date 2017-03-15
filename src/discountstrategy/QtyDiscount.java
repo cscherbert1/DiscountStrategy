@@ -26,16 +26,16 @@ public class QtyDiscount implements DiscountStrategy{
         return discount;
     }
     
-    public void setPercentOff(double percentOff){
+    public final void setPercentOff(double percentOff){
         //need validation
         this.percentOff = percentOff;
     }
 
-    public int getQtyNeeded() {
+    public final int getQtyNeeded() {
         return qtyNeeded;
     }
 
-    public void setQtyNeeded(int qtyNeeded) {
+    public final void setQtyNeeded(int qtyNeeded) {
         //need validation
         this.qtyNeeded = qtyNeeded;
     }

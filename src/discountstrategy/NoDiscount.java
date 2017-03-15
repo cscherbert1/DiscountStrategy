@@ -19,7 +19,7 @@ public class NoDiscount implements DiscountStrategy{
         return discount;
     }
 
-    private void setPercentOff() {
+    private final void setPercentOff() {
         percentOff = 0.00;
     }
     

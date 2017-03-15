@@ -13,15 +13,15 @@ public class Customer {
         setCustName(custName);
     }
 
-    public String getCustID() {
+    public final String getCustID() {
         return custID;
     }
 
-    public void setCustID(String custID) {
+    public final void setCustID(String custID) {
         this.custID = custID;
     }
 
-    public String getCustName() {
+    public final String getCustName() {
         //check to see if custName is null, if yes, return empty string. (paid w/ cash)
         if(custName == null){
             return "";
@@ -31,7 +31,7 @@ public class Customer {
 
     }
 
-    public void setCustName(String custName) {
+    public final void setCustName(String custName) {
         //custName is allowed to be null in this instance. What other validation should be considered?
         this.custName = custName;
     }

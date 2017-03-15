@@ -25,12 +25,13 @@ public class MemoryDataAccess implements DataAccessStrategy {
     
     /**
      * Tries to find a Customer by customer id.
-     * @param custId - must not be null or empty
+     * @param custID
+     * @param db
      * @return found Customer or null if not found or bad argument
      */
 
     @Override
-    public Customer findCustomer(String custID, DataAccessStrategy db) {
+    public final Customer findCustomer(String custID, DataAccessStrategy db) {
                 // validation is needed for method parameter
         if(custID == null || custID.length() == 0) {
             System.out.println("Sorry, FakeDatabase.findCustomer method has "
@@ -50,7 +51,7 @@ public class MemoryDataAccess implements DataAccessStrategy {
     }
 
     @Override
-    public Product findProduct(String prodID, DataAccessStrategy db) {
+    public final Product findProduct(String prodID, DataAccessStrategy db) {
                 // validation is needed for method parameter
         if(prodID == null || prodID.length() == 0) {
             System.out.println("Sorry, FakeDatabase.findProduct method has "
