@@ -8,15 +8,14 @@ public class Receipt {
 
     private DataAccessStrategy db;
     private Customer customer;
-    private LineItem[] lineItems = new LineItem[1];
+    private LineItem[] lineItems;
 
     public Receipt(String custID, DataAccessStrategy db) {
         //use db and custID to find the appropriate customer if it exists
         customer = findCustomer(custID, db);
-//        //open the first spot for a line item by initializing the array
-//        if (lineItems == null) {
-//                lineItems = new LineItem[1];
-//        }
+        //initialize the lineItems array
+        lineItems = new LineItem[0];
+
     }
 
     private final Customer findCustomer(String custID, DataAccessStrategy db) {
@@ -38,35 +37,14 @@ public class Receipt {
         //validation, can't be null
         if (item == null) {
             throw new NullPointerException();
-        }
+        }  
         
-        /*if the commented block is run instead of the block below
-        (starting w/ if(lineItems.length == 1), then a NullPointerException is thrown
-        
-        If the other block starting w/ if-logic is used, program runs, but only outputs to console
-        despite having gui-output selected
-        Also only displays the second line item, ignores the first. 
-        
-        I'm not sure why any of this is happening. 
-        
-        */ 
+        LineItem[] tempItems = new LineItem[(lineItems.length +1)];
+        System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
+        tempItems[lineItems.length] = item;
+        lineItems = tempItems;
+        tempItems = null; 
        
-//            LineItem[] tempItems = new LineItem[(lineItems.length +1)];
-//            System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
-//            tempItems[lineItems.length] = item;
-//            lineItems = tempItems;
-//            tempItems = null; 
-        
-        if (lineItems.length == 1){
-            //add first line item to lineItems[0]
-            lineItems[0]=item;            
-        }else {          
-            LineItem[] tempItems = new LineItem[(lineItems.length +1)];
-            System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
-            tempItems[lineItems.length] = item;
-            lineItems = tempItems;
-            tempItems = null;  
-        }        
     }
 
     public String getReceiptData() {

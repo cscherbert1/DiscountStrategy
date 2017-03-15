@@ -19,6 +19,10 @@ public class Product {
         
         
     }
+    
+    public double getDiscount(int qty) {
+        return ds.getDiscount(qty, price);
+    }
 
     public String getProdID() {
         return prodID;

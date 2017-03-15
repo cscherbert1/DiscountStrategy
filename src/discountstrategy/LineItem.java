@@ -27,7 +27,7 @@ public class LineItem {
         data += product.getPrice() + "   ";
         data += getQty() + "   "; 
         data += getSubtotal() + "   ";
-        data += getTotalDiscount();
+        data += product.getDiscountStrategy().getDiscount(qty, product.getPrice());
         
         return data;
     }
@@ -37,10 +37,11 @@ public class LineItem {
         return subtotal;
     }
     
-    public double getTotalDiscount(){
-        double totalDiscount =(product.getPrice() * (product.getDiscountStrategy().getDiscount())* getQty());
-        return totalDiscount;
-    }
+    //this may not be the best way to accomplish the goal of getting the discount. use the discount strategy objects
+//    public double getTotalDiscount(){
+//        double totalDiscount =(product.getPrice() * (product.getDiscountStrategy().getDiscount())* getQty());
+//        return totalDiscount;
+//    }
 
     public int getQty() {
         return qty;

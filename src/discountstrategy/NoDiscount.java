@@ -9,15 +9,17 @@ public class NoDiscount implements DiscountStrategy{
     private double percentOff;
     
     public NoDiscount(){
-        setDiscount();
+        setPercentOff();
     }
 
     @Override
-    public double getDiscount() {
-        return percentOff;
+    public double getDiscount(int qty, double price) {
+        double discount = 0.00;
+        
+        return discount;
     }
 
-    private void setDiscount() {
+    private void setPercentOff() {
         percentOff = 0.00;
     }
     
