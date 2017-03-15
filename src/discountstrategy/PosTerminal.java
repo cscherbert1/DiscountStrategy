@@ -16,13 +16,26 @@ public class PosTerminal {
     }
 
     public final void startSale(String custID, DataAccessStrategy db) {
-        //pass custID and db to Receipt where they are used
-        receipt = new Receipt(custID, db);
+        //custID CAN be null. It gets converted to empty string in Customer constructor. 
+        if(db == null){
+            throw new IllegalArgumentException("Must provide a Data Access Strategy");
+        } else {
+            //pass custID and db to Receipt where they are used
+            receipt = new Receipt(custID, db);
+        }
+
     }
 
     public final void addItemToSale(String prodID, int qty, DataAccessStrategy db) {
-        //ask receipt to pass the prodID and qty to the LineItem where it is used
-        receipt.addLineItem(prodID, qty, db);
+        if(prodID == null || db == null){
+            throw new IllegalArgumentException("No values can be null. (prodID & DataAccessStrategy");
+        } else if(qty <= 0 || qty >10000){
+            throw new IllegalArgumentException("Quantity must be greater than 0 and less than 10000");
+        } else {
+            //ask receipt to pass the prodID and qty to the LineItem where it is used
+            receipt.addLineItem(prodID, qty, db); 
+        }
+
     }
 
     public final void endSale() {
@@ -37,7 +50,7 @@ public class PosTerminal {
 
     public final void setGuiOutput(OutputStrategy guiOutput) {
         if(guiOutput == null){
-            throw new NullPointerException();
+            throw new IllegalArgumentException("Output is mandatory");
         } else {
            this.guiOutput = guiOutput;           
         }
@@ -50,7 +63,7 @@ public class PosTerminal {
 
     public final void setConsoleOutput(OutputStrategy consoleOutput) {
         if(consoleOutput == null){
-            throw new NullPointerException();
+            throw new IllegalArgumentException("Output is mandatory");
         } else {
                    this.consoleOutput = consoleOutput; 
         }

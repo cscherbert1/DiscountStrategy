@@ -11,19 +11,32 @@ public class Receipt {
     private LineItem[] lineItems;
 
     public Receipt(String custID, DataAccessStrategy db) {
-        //use db and custID to find the appropriate customer if it exists
-        customer = findCustomer(custID, db);
+        if(custID.isEmpty()){
+            customer.setCustName("");
+        } else {
+            //use db and custID to find the appropriate customer if it exists
+            customer = findCustomer(custID, db); 
+        }
         //initialize the lineItems array
         lineItems = new LineItem[0];
-
     }
+    
+    
 
     private final Customer findCustomer(String custID, DataAccessStrategy db) {
-        //this method does the work of finding the customer
-        return db.findCustomer(custID, db);
+        if (db == null){
+            throw new IllegalArgumentException("DataAccessStrategy cannot be null");
+        } else {
+            //this method does the work of finding the customer
+            return db.findCustomer(custID, db);
+        }
+
     }
 
     public final void addLineItem(String prodID, int qty, DataAccessStrategy db) {
+        if (prodID == null || db == null){
+            
+        }
         //generates new line item based on prodID, qty. Uses the db to find the correct item based on prodID
         LineItem item = new LineItem(prodID, qty, db);
         //add created line item into the array
@@ -48,7 +61,12 @@ public class Receipt {
         String data = "";
 //        data += store.getReceiptGreeting() + "\n\n";
         //need if logic if no cust name
-        data += "Sold to: " + customer.getCustName() + "\n\n";
+        if(customer.getCustName().isEmpty()){
+            data += "Sold to: \n\n";
+        } else {
+            data += "Sold to: " + customer.getCustName() + "\n\n";
+        }
+
 
         data += getColumnHeadings();
         

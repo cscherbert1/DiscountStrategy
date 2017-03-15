@@ -17,7 +17,7 @@ public class Startup {
         
         PosTerminal pos = new PosTerminal(guiOutput, consoleOutput);
         //start sale: pass in customer ID if available
-        pos.startSale("100", db);
+        pos.startSale("", db);
         //add product1 (ProdID and qty)
         pos.addItemToSale("A101", 3, db);
         //add product2

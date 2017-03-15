@@ -5,28 +5,10 @@ package discountstrategy;
  * @author cscherbert1
  */
 public class NoDiscount implements DiscountStrategy{
+    private final double NO_DISCOUNT = 0.00;
     
-    private double percentOff;
-    
-    public NoDiscount(){
-        setPercentOff();
-    }
-
     @Override
     public double getDiscount(int qty, double price) {
-        double discount = 0.00;
-        
-        return discount;
-    }
-
-    private final void setPercentOff() {
-        percentOff = 0.00;
-    }
-    
-    
-    
-    
-    
-    
-    
+          return NO_DISCOUNT;
+    }       
 }
