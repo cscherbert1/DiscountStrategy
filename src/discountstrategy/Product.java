@@ -19,7 +19,11 @@ public class Product {
     }
     
     public final double getDiscount(int qty) {
-        return ds.getDiscount(qty, price);
+        if (qty < 1 || qty > 10000){
+            throw new IllegalArgumentException("Quantity must be betweeen 1 and 10,000");
+        } else {
+            return ds.getDiscount(qty, price);
+        }   
     }
 
     public final String getProdID() {
@@ -27,7 +31,9 @@ public class Product {
     }
 
     public final void setProdID(String prodID) {
-        //need validation
+        if(prodID == null){
+            throw new IllegalArgumentException("prodID can't be null");
+        }
         this.prodID = prodID;
     }
 

@@ -23,11 +23,7 @@ public class Customer {
 
     public final String getCustName() {
         //check to see if custName is null, if yes, return empty string. (paid w/ cash)
-        if(custName == null || custName == ""){
-            return "";
-        } else {
-            return custName;
-        }
+        return custName;
 
     }
 

@@ -8,10 +8,16 @@ public class PosTerminal {
     private Receipt receipt;
     private OutputStrategy guiOutput;
     private OutputStrategy consoleOutput;
+    private int transactionNumber;
+    private ReceiptFormatter formatter;
     
-    public PosTerminal(OutputStrategy guiOutput, OutputStrategy consoleOutput){
+    public PosTerminal(OutputStrategy guiOutput, OutputStrategy consoleOutput, ReceiptFormatter formatter){
         setGuiOutput(guiOutput);
         setConsoleOutput(consoleOutput);
+        transactionNumber = 0;
+        //this should have a setter. Validation: formatter can't be null
+        this.formatter = formatter;
+        
         
     }
 
@@ -20,8 +26,10 @@ public class PosTerminal {
         if(db == null){
             throw new IllegalArgumentException("Must provide a Data Access Strategy");
         } else {
+            transactionNumber++;            
             //pass custID and db to Receipt where they are used
-            receipt = new Receipt(custID, db);
+            receipt = new Receipt(custID, db, transactionNumber, formatter);
+
         }
 
     }
@@ -40,8 +48,8 @@ public class PosTerminal {
 
     public final void endSale() {
         //output the receipt
-        guiOutput.generateReceipt(receipt.getReceiptData());
-        consoleOutput.generateReceipt(receipt.getReceiptData());
+        guiOutput.generateReceipt(receipt.getReceiptData(transactionNumber, formatter));
+        consoleOutput.generateReceipt(receipt.getReceiptData(transactionNumber, formatter));
     }
 
     public final OutputStrategy getGuiOutput() {
@@ -68,9 +76,6 @@ public class PosTerminal {
                    this.consoleOutput = consoleOutput; 
         }
 
-    }
-    
-    
-    
-    
+    }   
+      
 }

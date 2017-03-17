@@ -17,7 +17,14 @@ public class LineItem {
     
     //helper method does the work of finding the product inside the db based on passed in prodID
     private final Product findProduct(String prodID, DataAccessStrategy db){
-        return db.findProduct(prodID, db);
+        if (prodID == null) {
+            throw new IllegalArgumentException("Product ID cannot be null");
+        } else if (db == null){
+            throw new IllegalArgumentException("DataAccessStrategy cannot be null");
+        } else {
+            return db.findProduct(prodID, db);            
+        }
+
     }
     
     public final String getLineData(){
@@ -37,21 +44,21 @@ public class LineItem {
         return subtotal;
     }
     
-    //this may not be the best way to accomplish the goal of getting the discount. use the discount strategy objects
-//    public double getTotalDiscount(){
-//        double totalDiscount =(product.getPrice() * (product.getDiscountStrategy().getDiscount())* getQty());
-//        return totalDiscount;
-//    }
+    public double getTotalSaved(){
+        double totalSaved = 0.00;
+        totalSaved = product.getDiscountStrategy().getDiscount(qty, product.getPrice());
+        return totalSaved;
+    }
 
     public final int getQty() {
         return qty;
     }
 
     public final void setQty(int qty) {
-        //need validation
-        this.qty = qty;
+        if (qty < 1 || qty > 10000){
+            throw new IllegalArgumentException("Quantity must be betweeen 1 and 10,000");
+        } else {
+            this.qty = qty;   
+        }
     }
-    
-    
-    
 }
