@@ -18,7 +18,12 @@ public class Customer {
     }
 
     public final void setCustID(String custID) {
-        this.custID = custID;
+        if (custID == null) {
+            throw new IllegalArgumentException ("CustomrID must be provided. It cannot be null.");
+        } else {
+            this.custID = custID;           
+        }
+
     }
 
     public final String getCustName() {
@@ -28,7 +33,7 @@ public class Customer {
     }
 
     public final void setCustName(String custName) {
-        //custName is allowed to be null in this instance. What other validation should be considered?
+        //custName is allowed to be null in this instance.
         this.custName = custName;
     }
     

@@ -35,8 +35,10 @@ public class PosTerminal {
     }
 
     public final void addItemToSale(String prodID, int qty, DataAccessStrategy db) {
-        if(prodID == null || db == null){
-            throw new IllegalArgumentException("No values can be null. (prodID & DataAccessStrategy");
+        if(prodID == null){
+            throw new IllegalArgumentException("ProductID must be provided. It cannot be null.");
+        } else if (db == null){
+            throw new IllegalArgumentException("DataAccessStrategy must be provided. It cannot be null.");
         } else if(qty <= 0 || qty >10000){
             throw new IllegalArgumentException("Quantity must be greater than 0 and less than 10000");
         } else {
@@ -58,7 +60,7 @@ public class PosTerminal {
 
     public final void setGuiOutput(OutputStrategy guiOutput) {
         if(guiOutput == null){
-            throw new IllegalArgumentException("Output is mandatory");
+            throw new IllegalArgumentException("Output is mandatory. Gui Output Strategy cannot be null.");
         } else {
            this.guiOutput = guiOutput;           
         }
@@ -71,7 +73,7 @@ public class PosTerminal {
 
     public final void setConsoleOutput(OutputStrategy consoleOutput) {
         if(consoleOutput == null){
-            throw new IllegalArgumentException("Output is mandatory");
+            throw new IllegalArgumentException("Output is mandatory. Console Output Strategy cannot be null.");
         } else {
                    this.consoleOutput = consoleOutput; 
         }

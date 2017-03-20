@@ -30,7 +30,7 @@ public class Startup {
         //add product1 (ProdID and qty)
         pos.addItemToSale("A101", 3, db);
         //add product2
-        pos.addItemToSale("B205", 5, db); 
+        pos.addItemToSale("B205", 2, db); 
         //add product 3 
         pos.addItemToSale("C222", 2, db);
         //end sale    
