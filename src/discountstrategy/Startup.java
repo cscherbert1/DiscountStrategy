@@ -1,4 +1,3 @@
-
 package discountstrategy;
 
 /**
@@ -8,7 +7,12 @@ package discountstrategy;
 public class Startup {
 
     public static void main(String[] args) {
-        DataAccessStrategy db = new MemoryDataAccess();
+        /*does the setup done here also need to be validated? Technically, if
+        there is an error here, there will be a runtime error (eg. missing a "new" keyword)
+        */
+        
+//        DataAccessStrategy db = new MemoryDataAccess();
+        DataAccessStrategy db = null;
         OutputStrategy guiOutput = new GuiReceiptOutput();
         OutputStrategy consoleOutput = new ConsoleReceiptOutput();
         ReceiptFormatter formatter = new DetailedReceiptFormat();

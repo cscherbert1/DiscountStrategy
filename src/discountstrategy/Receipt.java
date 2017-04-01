@@ -11,11 +11,11 @@ public class Receipt {
     private LineItem[] lineItems;
     private int transactionNumber;
 
-    public Receipt(String custID, DataAccessStrategy db, int transactionNumber, ReceiptFormatter formatter) {
+    public Receipt(String custID, DataAccessStrategy db, int transactionNumber, ReceiptFormatter formatter) throws IllegalArgumentException{
         if (transactionNumber < 0) {
             throw new IllegalArgumentException("Transaction number must be greater than 0");
         } else if (db == null) {
-            throw new IllegalArgumentException("This program must have access to a database");
+            throw new IllegalArgumentException("To generate a receipt a Data Access Strategy must be provided.");
         } else if (custID == null || custID.isEmpty()) {
             customer = new Customer("", "");
         } else {
@@ -36,7 +36,7 @@ public class Receipt {
         }
     }
 
-    public final void addLineItem(String prodID, int qty, DataAccessStrategy db) {
+    public final void addLineItem(String prodID, int qty, DataAccessStrategy db) throws IllegalArgumentException{
         if (prodID == null || db == null) {
             throw new IllegalArgumentException("Null is not an accepted value (prodID & DataAccessStrategy");
         } else {
