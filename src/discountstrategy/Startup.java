@@ -14,6 +14,7 @@ public class Startup {
 //        DataAccessStrategy db = new MemoryDataAccess();
         DataAccessStrategy db = null;
         OutputStrategy guiOutput = new GuiReceiptOutput();
+//        OutputStrategy guiOutput = null;
         OutputStrategy consoleOutput = new ConsoleReceiptOutput();
         ReceiptFormatter formatter = new DetailedReceiptFormat();
                 

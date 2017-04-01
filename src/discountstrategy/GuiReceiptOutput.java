@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class GuiReceiptOutput implements OutputStrategy{
 
     @Override
-    public final void generateReceipt(String receiptData) {
+    public final void generateReceipt(String receiptData) throws IllegalArgumentException{
         if (receiptData == null){
             throw new IllegalArgumentException ("Receipt Data must be provided in order to generate receipt. receiptData cannot be null.");
         } else {

@@ -15,7 +15,7 @@ public class QtyDiscount implements DiscountStrategy {
     }
 
     @Override
-    public final double getDiscount(int qty, double price) {
+    public final double getDiscount(int qty, double price) throws IllegalArgumentException{
         if (qty < 0 || qty > 10000) {
             throw new IllegalArgumentException("Quantity must be greater than 0 and less than 10,000");
         } else if (price < 0 || price > 1000000) {

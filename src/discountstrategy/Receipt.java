@@ -29,7 +29,7 @@ public class Receipt {
 
     private final Customer findCustomer(String custID, DataAccessStrategy db) {
         if (db == null) {
-            throw new IllegalArgumentException("DataAccessStrategy cannot be null");
+            throw new IllegalArgumentException("DataAccessStrategy cannot be null. Without access to the database, customers cannot be found.");
         } else {
             //this method does the work of finding the customer
             return db.findCustomer(custID, db);

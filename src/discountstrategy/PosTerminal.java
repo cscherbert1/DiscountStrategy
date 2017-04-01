@@ -37,7 +37,7 @@ public class PosTerminal {
 
     public final void addItemToSale(String prodID, int qty, DataAccessStrategy db) {
         if(prodID == null){
-            handleExceptions(new IllegalArgumentException("ProductID must be provided. It cannot be null."));
+            handleExceptions(new IllegalArgumentException("ProductID must be provided. It cannot be null. Some items may be missing from this sale."));
         } else if (db == null){
             handleExceptions(new IllegalArgumentException("DataAccessStrategy must be provided. It cannot be null."));
         } else if(qty <= 0 || qty >10000){
